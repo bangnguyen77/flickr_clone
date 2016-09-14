@@ -10,7 +10,13 @@ class ImagesController < ApplicationController
 
   def create
     @user = current_user
-    @image = @user.images.new(image_params)
+    # binding.pry
+    @image = @user.images.create(title: params[:title], url: params[:url], user_id: @user.id)
+    tag_array = params[:tags].split(',')
+    tag_array.each do |tag|
+      @image.tags.create(name: tag)
+    end
+
     if @image.save
       redirect_to images_path
     else

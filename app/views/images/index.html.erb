@@ -2,6 +2,12 @@
   <h3><%= image.title %></h3>
   <h5>posted by <%= image.user.email %></h5>
   <img src="<%=image.url%>">
+  <% if image.tags.any? %>
+    <h6>Tags:</h6>
+    <% image.tags.each do |tag| %>
+      <h6><%=tag.name%></h6>
+    <% end %>
+  <% end %>
   <% if current_user && current_user.id == image.user.id %>
     <%= button_to "edit", edit_image_path(image), method: "get" %>
     <%= button_to "delete", image_path(image),method: "delete",  :data =>
