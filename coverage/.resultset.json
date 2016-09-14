@@ -613,7 +613,7 @@
       "/Users/Guest/Desktop/flickr_clone/app/controllers/images_controller.rb": [
         1,
         1,
-        4,
+        6,
         null,
         null,
         null,
@@ -645,14 +645,10 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
         1,
@@ -681,6 +677,22 @@
         1,
         null,
         1,
+        null
+      ],
+      "/Users/Guest/Desktop/flickr_clone/spec/features/destroy_image_pages_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/Guest/Desktop/flickr_clone/spec/features/edit_image_pages_spec.rb": [
@@ -732,6 +744,6 @@
         null
       ]
     },
-    "timestamp": 1473889704
+    "timestamp": 1473890888
   }
 }
