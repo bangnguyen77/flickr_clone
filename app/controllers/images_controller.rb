@@ -31,6 +31,17 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    @image = Image.find(params[:id])
+    if @image.destroy
+      flash[:notice] = "Image successfully deleted"
+      redirect_to images_path
+    else
+      flash[:alert] = "There was a problem deleting your image"
+      redirect_to images_path
+    end
+  end
+
   private
   def image_params
     params.require(:image).permit(:title, :url)
