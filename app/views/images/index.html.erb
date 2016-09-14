@@ -2,6 +2,9 @@
   <h3><%= image.title %></h3>
   <h5>posted by <%= image.user.email %></h5>
   <img src="<%=image.url%>">
+  <% if current_user && current_user.id == image.user.id %>
+    <%= button_to "edit", edit_image_path(image), method: "get" %>
+  <% end %>
 <% end %>
 
 <hr>
