@@ -20,7 +20,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :development do
