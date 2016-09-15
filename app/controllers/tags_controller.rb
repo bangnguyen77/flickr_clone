@@ -5,22 +5,24 @@ class TagsController < ApplicationController
   end
 
   def new
+    @users = User.all
     @image = Image.find(params[:image_id])
     @tag = @image.tags.new
   end
 
   def create
     @image = Image.find(params[:image_id])
-  #  binding.pry
-  #  new_tag = Tag.find_or_create_by(tag_params)
-    if new_tag = Tag.find_or_create_by(tag_params)
+    @tag = @image.tags.new
+    if tag_params[:name] != ""
+      new_tag = Tag.find_or_create_by(tag_params)
       @image.tags.push(new_tag)
       flash[:notice] = "Tag successfully added!"
       redirect_to images_path
     else
-      flash[:alert] = "Tag was not added."
-      render :new
+      flash[:alert] = "Tag name cannot be blank"
+      redirect_to new_image_tag_path(@image, @tag)
     end
+
   end
 
   def edit

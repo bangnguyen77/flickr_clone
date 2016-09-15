@@ -10,6 +10,7 @@ describe "the add an image process" do
     click_link 'Add an image'
     fill_in 'Title', :with => 'Something'
     fill_in 'Url', :with => 'Something else'
+    fill_in 'Tags', :with => "a, b, c"
     click_on 'Create Image'
     expect(page).to have_content 'Something'
   end

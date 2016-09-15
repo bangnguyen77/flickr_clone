@@ -1,7 +1,19 @@
+<%= render "layouts/errors", :object => @tag %>
+
 <h1>Add a tag to <%= @image.title %></h1>
 
+
+<h3>Write a tag:</h3>
 <%= form_for [@image, @tag] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+<hr>
+
+<h3>Tag a user:</h3>
+<%= form_for [@image, @tag] do |f| %>
+  <%= f.select :name, options = options_from_collection_for_select(@users, 'email', 'email')%>
   <%= f.submit %>
 <% end %>
