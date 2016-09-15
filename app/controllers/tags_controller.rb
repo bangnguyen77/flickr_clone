@@ -35,6 +35,14 @@ class TagsController < ApplicationController
     end
   end
 
+  def destroy
+    @image = Image.find(params[:image_id])
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    flash[:notice] = "Tag successfully deleted"
+    redirect_to image_path(@image)
+  end
+
   private
   def tag_params
     params.require(:tag).permit(:name)

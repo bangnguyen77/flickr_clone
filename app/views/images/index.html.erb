@@ -4,7 +4,7 @@
   <img src="<%=image.url%>">
   <% if current_user && current_user.id == image.user.id %>
   <%= button_to "edit", edit_image_path(image), method: "get" %>
-  <%= button_to "delete", image_path(image),method: "delete",  :data =>
+  <%= button_to "delete", image_path(image), method: "delete",  :data =>
                                             {:confirm => "Are you sure?",
                                               method: "delete"
                                               }%>

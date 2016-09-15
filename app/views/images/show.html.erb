@@ -6,7 +6,8 @@
 
 <ul>
   <% @image.tags.each do |tag| %>
-    <li><%= link_to tag.name, edit_image_tag_path(@image, tag)%></li>
+    <li><%= link_to tag.name, edit_image_tag_path(@image, tag)%> | <%= link_to "Delete Tag", image_tag_path(@image, tag), :data => {:confirm => "Are you sure?",
+                                                method: "delete" }%></li>
   <% end %>
 </ul>
 <%= link_to "Add a Tag", new_image_tag_path(@image) %>
