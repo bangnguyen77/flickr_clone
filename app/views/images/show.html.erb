@@ -1,8 +1,10 @@
 <h1><%=@image.title%></h1>
 
+<img src="<%=@image.url%>"%>
+
 <h2>Tags:</h2>
 
 <ul>
 <% @image.tags.each do |tag| %>
-  <li><%=tag.name%></li>
+  <li><%= link_to tag.name, edit_image_tag_path(@image, tag)%></li>
 <% end %>
