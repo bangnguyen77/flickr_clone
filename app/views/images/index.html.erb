@@ -12,7 +12,7 @@
   <% if image.tags.any? %>
     <h6>Tags:</h6>
     <% image.tags.each do |tag| %>
-      <h6><%=tag.name%></h6>
+      <h6><%= link_to tag.name, tag_path(tag)%></h6>
     <% end %>
   <% end %>
   <%= button_to "edit tags", image_path(image), method: "get" %>

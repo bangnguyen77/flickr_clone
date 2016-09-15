@@ -1,0 +1,8 @@
+<h1>Pictures with "<%= @tag.name %>" tag:</h1>
+
+<% @tag.images.each do |image| %>
+  <h3><%= image.title %><h3>
+  <h5>posted by:<%=image.user.email%></h5>
+  <img src="<%=image.url%>">
+  <hr>
+<% end %>

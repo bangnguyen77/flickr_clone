@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   def index
-
+    # binding.pry
+    @tag = Tag.find(params[:id])
   end
 
   def new
@@ -10,10 +11,14 @@ class TagsController < ApplicationController
 
   def create
     @image = Image.find(params[:image_id])
-    if @image.tags.create(tag_params)
+  #  binding.pry
+  #  new_tag = Tag.find_or_create_by(tag_params)
+    if new_tag = Tag.find_or_create_by(tag_params)
+      @image.tags.push(new_tag)
       flash[:notice] = "Tag successfully added!"
       redirect_to images_path
     else
+      flash[:alert] = "Tag was not added."
       render :new
     end
   end
