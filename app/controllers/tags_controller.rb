@@ -15,9 +15,14 @@ class TagsController < ApplicationController
     @tag = @image.tags.new
     if tag_params[:name] != ""
       new_tag = Tag.find_or_create_by(tag_params)
-      @image.tags.push(new_tag)
-      flash[:notice] = "Tag successfully added!"
-      redirect_to images_path
+      if @image.tags.include?(new_tag)
+        flash[:notice] = "Image already has that tag"
+        redirect_to new_image_tag_path(@image, @tag)
+      else
+        @image.tags.push(new_tag)
+        flash[:notice] = "Tag successfully added!"
+        redirect_to images_path
+      end
     else
       flash[:alert] = "Tag name cannot be blank"
       redirect_to new_image_tag_path(@image, @tag)
