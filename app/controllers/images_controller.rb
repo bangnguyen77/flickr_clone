@@ -18,6 +18,7 @@ class ImagesController < ApplicationController
     end
 
     if @image.save
+      flash[:notice] = "Image successfully added!"
       redirect_to images_path
     else
       render :new
@@ -26,13 +27,16 @@ class ImagesController < ApplicationController
 
   def edit
     @image = Image.find(params[:id])
+
   end
 
   def update
     @image = Image.find(params[:id])
     if @image.update(image_params)
+      flash[:notice] = "Image successfully updated!"
       redirect_to images_path
     else
+      flash[:alert] = "Image did not update!"
       render :edit
     end
   end
@@ -42,6 +46,10 @@ class ImagesController < ApplicationController
     @image.destroy
     flash[:notice] = "Image successfully deleted"
     redirect_to images_path
+  end
+
+  def show
+    @image = Image.find(params[:id])
   end
 
   private

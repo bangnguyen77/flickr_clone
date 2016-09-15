@@ -1,0 +1,8 @@
+<h1><%=@image.title%></h1>
+
+<h2>Tags:</h2>
+
+<ul>
+<% @image.tags.each do |tag| %>
+  <li><%=tag.name%></li>
+<% end %>
