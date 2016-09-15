@@ -3,6 +3,21 @@ class TagsController < ApplicationController
 
   end
 
+  def new
+    @image = Image.find(params[:image_id])
+    @tag = @image.tags.new
+  end
+
+  def create
+    @image = Image.find(params[:image_id])
+    if @image.tags.create(tag_params)
+      flash[:notice] = "Tag successfully added!"
+      redirect_to images_path
+    else
+      render :new
+    end
+  end
+
   def edit
     @image = Image.find(params[:image_id])
     @tag = Tag.find(params[:id])

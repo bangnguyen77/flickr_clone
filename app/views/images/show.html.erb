@@ -5,6 +5,8 @@
 <h2>Tags:</h2>
 
 <ul>
-<% @image.tags.each do |tag| %>
-  <li><%= link_to tag.name, edit_image_tag_path(@image, tag)%></li>
-<% end %>
+  <% @image.tags.each do |tag| %>
+    <li><%= link_to tag.name, edit_image_tag_path(@image, tag)%></li>
+  <% end %>
+</ul>
+<%= link_to "Add a Tag", new_image_tag_path(@image) %>
