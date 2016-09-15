@@ -27,3 +27,19 @@ img {
   margin: 30px;
   text-align: center;
 }
+
+#outer
+{
+    width:100%;
+    text-align: right;
+}
+
+#outerLeft {
+  width:100%;
+  text-align: left;
+  margin: 5px;
+}
+.inner
+{
+    display: inline-block;
+}

@@ -4,12 +4,19 @@
 
 <h2>Tags:</h2>
 
-<ul>
+<ul class="list-group">
   <% @image.tags.each do |tag| %>
-    <li>
-      <%= link_to tag.name, tag_path(tag)%> |
-      <%= link_to "Edit Tag", edit_image_tag_path(@image, tag)%> | <%= link_to "Delete Tag", image_tag_path(@image, tag), :data => {:confirm => "Are you sure?",
-                                                method: "delete" }%></li>
+    <li class="list-group-item">
+      <%= link_to tag.name, tag_path(tag)%>
+      <div id="outer">
+        <div class="inner">
+          <%= button_to "Edit Tag", edit_image_tag_path(@image, tag), method: "get", class: 'btn btn-sm btn-warning' %>
+        </div>
+        <div class="inner">
+          <%= button_to "Delete Tag", image_tag_path(@image, tag), method: "delete", class: 'btn btn-sm btn-danger', :data => {:confirm => "Are you sure?", method: "delete" }%>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ul>
-<%= link_to "Add a Tag", new_image_tag_path(@image) %>
+<%= button_to "Add a Tag", new_image_tag_path(@image), class: "btn btn-lg btn-primary bigButton", method: "get" %>

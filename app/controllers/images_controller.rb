@@ -13,7 +13,8 @@ class ImagesController < ApplicationController
     @image = @user.images.create(title: params[:title], url: params[:url], user_id: @user.id)
     tag_array = params[:tags].split(',')
     tag_array.each do |tag|
-      @image.tags.create(name: tag)
+      clean_tag = tag.strip
+      @image.tags.create(name: clean_tag)
     end
     if @image.save
       flash[:notice] = "Image successfully added!"

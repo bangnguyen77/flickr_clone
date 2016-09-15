@@ -6,14 +6,18 @@
     <h5>posted by <%= link_to image.user.email, user_path(image.user) %></h5>
     <img src="<%=image.url%>">
     <% if current_user && current_user.id == image.user.id %>
-    <%= button_to "edit", edit_image_path(image), class: 'btn btn-small btn-warning', method: "get" %>
-    <div class="makeInline">
-      <%= button_to "delete", image_path(image), class: 'btn btn-small btn-danger', method: "delete",  :data =>
-                                                {:confirm => "Are you sure?",
-                                                  method: "delete"
-                                                  }%>
-    </div>
-      <% end %>
+      <div id="outerLeft">
+        <div class="inner">
+          <%= button_to "edit", edit_image_path(image), class: 'btn btn-small btn-warning', method: "get" %>
+        </div>
+        <div class="inner">
+          <%= button_to "delete", image_path(image), class: 'btn btn-small btn-danger', method: "delete",  :data =>
+                              {:confirm => "Are you sure?",
+                                method: "delete"
+                                }%>
+        </div>
+      </div>
+    <% end %>
     <% if image.tags.any? %>
       <h4>Tags:</h4>
       <% number_of_tags = image.tags.length %>
