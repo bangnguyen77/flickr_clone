@@ -1,24 +1,33 @@
 <% @images.each do |image| %>
-  <h3><%= image.title %></h3>
-  <h5>posted by <%= link_to image.user.email, user_path(image.user) %></h5>
-  <img src="<%=image.url%>">
-  <% if current_user && current_user.id == image.user.id %>
-  <%= button_to "edit", edit_image_path(image), method: "get" %>
-  <%= button_to "delete", image_path(image), method: "delete",  :data =>
-                                            {:confirm => "Are you sure?",
-                                              method: "delete"
-                                              }%>
+  <div class="well">
+    <h3><%= image.title %></h3>
+    <h5>posted by <%= link_to image.user.email, user_path(image.user) %></h5>
+    <img src="<%=image.url%>">
+    <% if current_user && current_user.id == image.user.id %>
+    <%= button_to "edit", edit_image_path(image), class: 'btn btn-small btn-warning', method: "get" %>
+    <%= button_to "delete", image_path(image), class: 'btn btn-small btn-danger', method: "delete",  :data =>
+                                              {:confirm => "Are you sure?",
+                                                method: "delete"
+                                                }%>
+      <% end %>
+    <% if image.tags.any? %>
+      <h4>Tags:</h4>
+      <% number_of_tags = image.tags.length %>
+      <% image.tags.each_with_index do |tag, index| %>
+        <% if index == number_of_tags - 1 %>
+          <h5 class="makeInline"><%= link_to tag.name, tag_path(tag)%></h5>
+        <% else %>
+          <h5 class="makeInline"><%= link_to tag.name, tag_path(tag)%>,</h5>
+        <% end %>
+      <% end %>
     <% end %>
-  <% if image.tags.any? %>
-    <h6>Tags:</h6>
-    <% image.tags.each do |tag| %>
-      <h6><%= link_to tag.name, tag_path(tag)%></h6>
-    <% end %>
-  <% end %>
-  <%= button_to "edit tags", image_path(image), method: "get" %>
+    <%= button_to "edit tags", image_path(image), class: 'btn btn-info', method: "get" %>
+  </div>
 <% end %>
 
 <hr>
 <% if current_user %>
-  <%= link_to "Add an image", new_image_path %>
+  <div class="bigButton">
+    <%= button_to "Add an image", new_image_path, class: 'btn btn-lg btn-primary', method: 'get' %>
+  </div>
 <% end %>
