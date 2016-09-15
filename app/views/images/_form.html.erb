@@ -1,11 +1,11 @@
 <%= render "layouts/errors", :object => @image %>
 
-<%= form_tag @image do %>
-  <%= label_tag :title %>
-  <%= text_field_tag :title %>
-  <%= label_tag :url %>
-  <%= text_field_tag :url %>
-  <%= label_tag :tags %>
-  <%= text_field_tag :tags %>
-  <%= submit_tag 'Create Image'%>
-<% end %>
+  <%= form_tag @image do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
+    <%= label_tag :url %>
+    <%= text_field_tag :url %>
+    <%= label_tag :tags %>
+    <%= text_field_tag :tags %>
+    <%= submit_tag 'Create Image', class:"btn btn-lg btn-primary bigButton"%>
+  <% end %>

@@ -1,11 +1,13 @@
-<h1><%=@user.email%>'s page</h1>
+<h1><%=@user.email%>'s Profile</h1>
 
 <hr>
 
 <% if @tagged_photos.any? %>
-  <h3>Tagged photos of <%=@user.email%>:</h3>
+  <div class="well">
+    <h3>Tagged photos of <%=@user.email%>:</h3>
 
-  <% @tagged_photos.each do |photo| %>
-    <img src="<%=photo.url%>">
-  <% end %>
+    <% @tagged_photos.each do |photo| %>
+      <img src="<%=photo.url%>">
+    <% end %>
+  </div>
 <% end %>

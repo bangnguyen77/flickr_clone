@@ -1,3 +1,5 @@
+<h2>Recently posted images:</h2>
+
 <% @images.each do |image| %>
   <div class="well">
     <h3><%= image.title %></h3>
@@ -5,10 +7,12 @@
     <img src="<%=image.url%>">
     <% if current_user && current_user.id == image.user.id %>
     <%= button_to "edit", edit_image_path(image), class: 'btn btn-small btn-warning', method: "get" %>
-    <%= button_to "delete", image_path(image), class: 'btn btn-small btn-danger', method: "delete",  :data =>
-                                              {:confirm => "Are you sure?",
-                                                method: "delete"
-                                                }%>
+    <div class="makeInline">
+      <%= button_to "delete", image_path(image), class: 'btn btn-small btn-danger', method: "delete",  :data =>
+                                                {:confirm => "Are you sure?",
+                                                  method: "delete"
+                                                  }%>
+    </div>
       <% end %>
     <% if image.tags.any? %>
       <h4>Tags:</h4>
