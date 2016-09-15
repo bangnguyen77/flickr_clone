@@ -1,6 +1,6 @@
 <% @images.each do |image| %>
   <h3><%= image.title %></h3>
-  <h5>posted by <%= image.user.email %></h5>
+  <h5>posted by <%= link_to image.user.email, user_path(image.user) %></h5>
   <img src="<%=image.url%>">
   <% if current_user && current_user.id == image.user.id %>
   <%= button_to "edit", edit_image_path(image), method: "get" %>
